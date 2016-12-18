@@ -1,0 +1,108 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<title>Викторина</title>
+<link rel="stylesheet"  type="text/css" href="css.css" />
+</head>
+<body>
+    <font face="Verdana" size=10 color="red">
+        Чехия
+    </font>
+<ul>
+<li><a href="glavnaya.html">Главная</a></li>
+<li><a href="karta.html">Карта</a></li>
+<li><a href="viktorina.html">Викторина</a></li>
+<li><a href="kontakti.html">Контакты</a></li>
+ <style type="text/css">
+   TD.leftcol {
+    width: 110px; 
+    vertical-align: top; 
+   }
+  </style>
+<br><br>
+<script type="text/javascript" language="JavaScript">// <![CDATA[
+ var res="232"; 
+function check_me()
+{
+    var count=0;
+    with(document.test) {
+if (!Q1[0].checked&&!Q1[1].checked&&!Q1[2].checked)  
+{count+=1};  
+if (!Q2[0].checked&&!Q2[1].checked&&!Q2[2].checked)  
+{count+=1};  
+if (!Q3[0].checked&&!Q3[1].checked&&!Q3[2].checked)  
+{count+=1};  
+if (count>0) alert("Вы выполнили не все задания. Проверьте себя!")    
+        else answer();
+    }
+} 
+ 
+function control(k, f1,f2,f3) {
+if (k==1&&f1.checked) return true;
+if (k==2&&f2.checked) return true;
+if (k==3&&f3.checked) return true;
+return false;
+}
+
+function answer() {
+answ="";
+     with(document)    {
+    answ+=control(res.charAt(0) ,test.Q1[0],test.Q1[1],test.Q1[2])?"1":"0";
+answ+=control(res.charAt(1) ,test.Q2[0],test.Q2[1],test.Q2[2])?"1":"0";
+answ+=control(res.charAt(2) ,test.Q3[0],test.Q3[1],test.Q3[2])?"1":"0";
+
+showResult();
+    }
+}
+ 
+function showResult()   {
+    var nok=0;
+    var i,s;
+ 
+for (i=0; i<answ.length;i++) {nok+=answ.charAt(i)=="1"?1:0;}
+if(nok==3) s="ОТЛИЧНО";
+if(nok==2) s="ХОРОШО";
+if(nok==1) s="УДОВЛЕТВОРИТЕЛЬНО";
+if (nok==0) s="НЕУДОВЛЕТВОРИТЕЛЬНО";
+    document.test.s1.
+    value="Количество правильных ответов "+nok+". Ваша оценка "+s+".";
+ 
+with(document.test)
+    {
+    if (answ.charAt(0)=="1") {T1.value=" + "} else {T1.value=" - "};
+   if (answ.charAt(1)=="1") {T2.value=" + "} else {T2.value=" - "};
+   if (answ.charAt(2)=="1") {T3.value=" + "} else {T3.value=" - "};
+     }
+}
+function showhide(obj){
+    if(obj == 'none') return 'inline';
+    else return 'none';
+}
+// ]]>
+</script>
+    </ul>
+<center><b>Тест на знание Чехии.</b></center><br/><br/>
+
+<form name="test"><ol>
+<li><b> О какой стране сайт?</b><br/>
+<input type="radio" value="0" name="Q1"/> Сингапур<br />
+<input type="radio" value="1" name="Q1"/> Чехия<br />
+<input type="radio" value="2" name="Q1"/> Словакия<br />
+<br/></li><li><b> Общая протяженность границы?</b><br/>
+<input type="radio" value="0" name="Q2"/> ~3000 km<br />
+<input type="radio" value="1" name="Q2"/> ~200 km<br />
+<input type="radio" value="2" name="Q2"/> ~1800 km<br />
+<br/></li><li><b> С какой страной эта страна граничит на севере?</b><br/>
+<input type="radio" value="0" name="Q3"/> С Германией<br />
+<input type="radio" value="1" name="Q3"/> С Польшей<br />
+<input type="radio" value="2" name="Q3"/> С Россией<br />
+<br/></li></ol>      
+<CENTER>
+<P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me()" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 
+</CENTER>        
+</form> 
+</body>
+</html>
